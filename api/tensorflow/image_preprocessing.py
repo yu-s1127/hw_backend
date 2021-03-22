@@ -2,7 +2,6 @@ import base64
 import numpy as np
 from PIL import Image
 import io
-import matplotlib.pyplot as plt
 
 def base64_to_numpy(base64_string):
     decoded = base64.b64decode(base64_string)
