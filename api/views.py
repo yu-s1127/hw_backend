@@ -15,7 +15,7 @@ def predict(request):
     predicted_label, prediction_prob = predict_mnist.predict(numpy_image)
 
     response_body = {
-        "predicred_label": str(predicted_label),
+        "predicted_label": str(predicted_label),
         "prediction_prob": prediction_prob
     }
 
