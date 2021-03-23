@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = False #Trueから変更
 
-ALLOWED_HOSTS = ['*'] #こちらでもok
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -14,10 +14,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'api.apps.ApiConfig', #ご自身のアプリ名
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -28,7 +30,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware', #追加
 ]
 
-ROOT_URLCONF = 'your_app_name.urls' #ご自身のアプリ名
+ROOT_URLCONF = 'backend.urls' #ご自身のアプリ名
 
 TEMPLATES = [
     {
@@ -87,10 +89,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS =(
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') #追加
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+]
 
 #追加
 try:
